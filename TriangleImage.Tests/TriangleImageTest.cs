@@ -102,7 +102,7 @@ namespace TriangleImage.Tests
             {
                 V1 = new Triangle.TriangleVertex() 
                 {
-                    Row = 30, 
+                    Row = 40, 
                     Col = 30, 
                 }, 
                 V2 = new Triangle.TriangleVertex()
@@ -112,7 +112,7 @@ namespace TriangleImage.Tests
                 }, 
                 V3 = new Triangle.TriangleVertex() 
                 {
-                    Row = 40, 
+                    Row = 30, 
                     Col = 30
                 }
             }; 
@@ -136,12 +136,12 @@ namespace TriangleImage.Tests
                 }, 
                 V2 = new Triangle.TriangleVertex()
                 {
-                    Row = 50, 
+                    Row = 60, 
                     Col = 60
                 }, 
                 V3 = new Triangle.TriangleVertex() 
                 {
-                    Row = 60, 
+                    Row = 50, 
                     Col = 60
                 }
             }; 
@@ -151,6 +151,35 @@ namespace TriangleImage.Tests
 
             Assert.AreEqual('F', r.Row); 
             Assert.AreEqual(12, r.Col); 
+        }
+
+        [TestMethod]
+        public void TestCalcRow4() 
+        {
+            Triangle t = new Triangle() 
+            {
+                V1 = new Triangle.TriangleVertex()
+                {
+                    Row = 10, 
+                    Col = 10
+                }, 
+                V2 = new Triangle.TriangleVertex() 
+                {
+                    Row = 0, 
+                    Col = 0
+                }, 
+                V3 = new Triangle.TriangleVertex() 
+                {
+                    Row = 10, 
+                    Col = 0
+                }
+            }; 
+
+            TriangleCoords.TriangleLocation r = 
+                TriangleCoords.CalcRowAndCol(t, 10); 
+
+            Assert.AreEqual('A', r.Row); 
+            Assert.AreEqual(1, r.Col); 
         }
     }
 }

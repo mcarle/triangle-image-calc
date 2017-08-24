@@ -50,6 +50,11 @@ namespace TriangleImage
             return t; 
         }
 
+        /// <summary>
+        /// Accepts right Triangle formed by three vertices such that each non hypotenuse side is 
+        /// of length nonHypoLen
+        /// </summary>
+        /// <returns> TriangleLocation containing char row (A-F) and int col (1-12) specifying where triangle is located in image</returns>
         public static TriangleLocation CalcRowAndCol(Triangle t, int nonHypoLen)
         {
             if (t == null || nonHypoLen < 1) 
@@ -57,6 +62,7 @@ namespace TriangleImage
                 throw new Exception("bad inputs.");
             }
 
+            // vertices ordered with lowest row indx first
             Triangle.TriangleVertex[] orderedVs = new Triangle.TriangleVertex[3]; 
             if (t.V1.Row <= t.V2.Row) 
             {
@@ -89,15 +95,45 @@ namespace TriangleImage
                 }
             }
 
+            if (orderedVs[1].Row < orderedVs[0].Row)
+            {
+                Triangle.TriangleVertex temp = orderedVs[1]; 
+                orderedVs[1] = orderedVs[0]; 
+                orderedVs[0] = temp; 
+            }
+
             char row = (char)((int)'A' + (orderedVs[0].Row / nonHypoLen)); 
             if (orderedVs[0].Row == orderedVs[1].Row)
             {
-                return new TriangleLocation(row, 
-                                    orderedVs[1].Col / nonHypoLen * 2); 
+                // triangle orientaion: 
+                // -----
+                //  \  |
+                //    \|
+                if (orderedVs[1].Col > orderedVs[0].Col)
+                {
+                    return new TriangleLocation(row, 
+                                        orderedVs[1].Col / nonHypoLen * 2);                    
+                }
+                else
+                {
+                    return new TriangleLocation(row, 
+                                        orderedVs[0].Col / nonHypoLen * 2); 
+                }
+
             }
             else
             {
-                return new TriangleLocation(row, (orderedVs[0].Col + nonHypoLen) / nonHypoLen * 2 - 1); 
+                // triangle orientation: 
+                // | \
+                // |__\
+                if (orderedVs[2].Col > orderedVs[1].Col) 
+                {
+                    return new TriangleLocation(row, orderedVs[2].Col / nonHypoLen * 2 - 1); 
+                }
+                else 
+                {
+                    return new TriangleLocation(row, orderedVs[1].Col / nonHypoLen * 2 - 1); 
+                }
             }
 
         }
