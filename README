@@ -1,0 +1,5 @@
+Solution to triangle problems are in .\TriangleImage\TriangleCoords.cs
+
+Tests can be run via: 
+
+dotnet test TriangleImage.Tests/TriangleImage.Tests.csproj 
