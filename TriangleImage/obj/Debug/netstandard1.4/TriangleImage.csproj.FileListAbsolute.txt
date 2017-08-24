@@ -1,6 +1,0 @@
-/Users/mcarle/development/cherwell/TriangleImage/bin/Debug/netstandard1.4/TriangleImage.deps.json
-/Users/mcarle/development/cherwell/TriangleImage/bin/Debug/netstandard1.4/TriangleImage.dll
-/Users/mcarle/development/cherwell/TriangleImage/bin/Debug/netstandard1.4/TriangleImage.pdb
-/Users/mcarle/development/cherwell/TriangleImage/obj/Debug/netstandard1.4/TriangleImage.AssemblyInfo.cs
-/Users/mcarle/development/cherwell/TriangleImage/obj/Debug/netstandard1.4/TriangleImage.dll
-/Users/mcarle/development/cherwell/TriangleImage/obj/Debug/netstandard1.4/TriangleImage.pdb
